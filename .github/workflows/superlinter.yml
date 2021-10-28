@@ -6,8 +6,13 @@ jobs:
   super-lint:
     name: Lint code base
     runs-on: ubuntu-latest
+	env:
+	  platform: Azure
+	  region: central
+	  profile_path: profile/
     steps:
       - name: Checkout code
+	    if: ${{ env.platform == 'central' }}
         uses: action/checkout@v2
         
       - name: Run Super-Linter
